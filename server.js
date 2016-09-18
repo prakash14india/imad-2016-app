@@ -12,10 +12,10 @@ app.get('/a1', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui/html', 'a1.html'));
 });
 app.get('/a2', function (req, res) {
-  res.send("Article two requested annd will be served here");
+  res.sendFile(path.join(__dirname, 'ui/html', 'a2.html'));
 });
 app.get('/a3', function (req, res) {
-  res.send("Article three requested annd will be served here");
+  res.sendFile(path.join(__dirname, 'ui/html', 'a3.html'));
 });
 
 

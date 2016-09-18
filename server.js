@@ -2,6 +2,63 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 
+var a1 = {
+    title: "Article One - Prakash",
+    heading: "Article One",
+    date: "Sep 18, 2016",
+    content: `
+        <p>My Sample content appear here, My Sample content appear here, My Sample content appear here, My Sample content appear here.</p>
+        <p>My Sample content appear here, My Sample content appear here, My Sample content appear here, My Sample content appear here.</p>
+        <p>My Sample content appear here, My Sample content appear here, My Sample content appear here, My Sample content appear here.</p>
+        <p>My Sample content appear here, My Sample content appear here, My Sample content appear here, My Sample content appear here.</p>`
+};
+
+var a2 = {
+    title: "Article Two - Prakash",
+    heading: "Article Two",
+    date: "Sep 17, 2016",
+    content: "<p>My Sample content appear here two article</p>"
+};
+
+var a3 = {
+    title: "Article Three - Prakash",
+    heading: "Article Three",
+    date: "Sep 15, 2016",
+    content: "<p>My Sample content appear here third article</p>"
+};
+
+function createTemplate(data) {
+    var htmlTemplate = `
+        <html>
+            <head>
+                <title>${data.title}</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <link href="/ui/style.css" rel="stylesheet" />
+            </head>
+            <body>
+                <div class="container">
+                    <div>
+                        <a href="/">Home</a>
+                        <a href="/a1">Article One</a>
+                        <a href="/a2">Article Two</a>
+                        <a href="/a3">Article Three</a>
+                    </div>
+                    <hr/>
+                    <h3>${data.heading}</h3>
+                    <div>
+                        ${data.date}
+                    </div>
+                    <div>
+                        ${data.content}
+                    </div>
+                </div>
+            </body>
+        </html>    
+    `
+    return htmlTemplate;
+}
+
+
 var app = express();
 app.use(morgan('combined'));
 
@@ -9,13 +66,13 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 app.get('/a1', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui/html', 'a1.html'));
+  res.send(createTemplate(a1));
 });
 app.get('/a2', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui/html', 'a2.html'));
+  res.send(createTemplate(a2));
 });
 app.get('/a3', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui/html', 'a3.html'));
+  res.send(createTemplate(a3));
 });
 
 

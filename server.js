@@ -3,7 +3,7 @@ var morgan = require('morgan');
 var path = require('path');
 
 var articles = {
-    one: {
+    a1: {
         title: "Article One - Prakash",
         heading: "Article One",
         date: "Sep 18, 2016",
@@ -13,13 +13,13 @@ var articles = {
             <p>My Sample content appear here, My Sample content appear here, My Sample content appear here, My Sample content appear here.</p>
             <p>My Sample content appear here, My Sample content appear here, My Sample content appear here, My Sample content appear here.</p>`
     },
-    two: {
+    a2: {
         title: "Article Two - Prakash",
         heading: "Article Two",
         date: "Sep 17, 2016",
         content: "<p>My Sample content appear here two article</p>"
     },
-    three: {
+    a3: {
         title: "Article Three - Prakash",
         heading: "Article Three",
         date: "Sep 15, 2016",
@@ -65,15 +65,10 @@ app.use(morgan('combined'));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/a1', function (req, res) {
-  res.send(createTemplate(articles.one));
+app.get('/:articleName', function (req, res) {
+  res.send(createTemplate(articles[articleName]));
 });
-app.get('/a2', function (req, res) {
-  res.send(createTemplate(articles.two));
-});
-app.get('/a3', function (req, res) {
-  res.send(createTemplate(articles.three));
-});
+
 
 
 

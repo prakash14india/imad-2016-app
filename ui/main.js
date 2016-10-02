@@ -51,10 +51,12 @@ btnCounter.onclick = function() {
 }
 
 //Submit Name
-var name = document.getElementById("name");
-var name = name.value;
 var submit = document.getElementById("submit_btn");
 submit.onclick = function() {
+    //Get Value
+    var name = document.getElementById("name");
+    var name = name.value;
+
      //Create request to the counter endpoint
     var req = new XMLHttpRequest();
     

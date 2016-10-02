@@ -26,15 +26,26 @@ imgMadi.onclick = function() {
 }
 //Count code
 var btnCounter = document.getElementById("counter");
-var counter = 0;
 
 btnCounter.onclick = function() {
-    //Make a request to the counter endpoint
+    //Create request to the counter endpoint
+    var req = new XMLHttpRequest();
     
     //Capture the response and store it in a variable
+    req.onreadystatechange = function() {
+        if (req.readyState === XMLHttpRequest.DONE) {
+            //Take same action
+            if (req.status === 200) {
+                var counter = req.responseText;
+                //Render the variable in the correct span
+                var span = document.getElementById("count");
+                span.innerHTML = counter.toString();
+            }
+        }
+    }
     
-    //Render the variable in the correct span
-    counter = counter + 1;
-    var span = document.getElementById("count");
-    span.innerHTML = counter.toString();
+    //Make the request
+    req.open('GET', 'http://prakash14india.imad.hasura-app.io/counter', true);
+    req.send(null);
+    
 }

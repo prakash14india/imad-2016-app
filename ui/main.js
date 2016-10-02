@@ -1,9 +1,6 @@
 console.log('Loaded!');
 
 //Get Name Content change value
-var contentId = document.getElementById("Name");
-contentId.innerHTML = "&#x2013; Prakash Venkatesan";
-
 var imgMadi = document.getElementById("imgMadi");
 var marginSize = 0;
 var marginMoveLeft = true;

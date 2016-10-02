@@ -52,7 +52,7 @@ btnCounter.onclick = function() {
 
 //Submit Name
 var name = document.getElementById("name");
-var name = nameInput.value;
+var name = name.value;
 var submit = document.getElementById("submit_btn");
 submit.onclick = function() {
     //Make request get server name
